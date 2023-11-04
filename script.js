@@ -33,7 +33,7 @@ function handleScroll() {
       if (e.type === "touchstart") {
           touchStartX = e.touches[0].clientX;
       } else if (e.type === "touchend") {
-          const touchEndX = e.changedTouches[0].clientX;
+          const touchEndX = e.cshangedTouches[0].clientX;
           const deltaX = touchStartX - touchEndX;
 
           if (deltaX > 50) {
@@ -43,9 +43,6 @@ function handleScroll() {
               // Swipe right, show the previous card
               currentCard = Math.max(currentCard - 1, 0);
           }
-
-          // Update the card display
-          cards.style.transform = `translateX(-${currentCard * 100}%)`;
       }
   };
 
