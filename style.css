@@ -690,10 +690,10 @@ nav > a:last-child {
 }
 @media (max-width: 419px) {
   .card {
-    width: 7rem;
+    width: 8.2rem;
   }
   .cards label {
-    width: 7rem;
+    width: 8.2rem;
   }
   .card .image img{
     height: 6rem;
