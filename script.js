@@ -25,29 +25,7 @@ function handleScroll() {
   const line = document.querySelector(".line");
   const private = document.querySelector(".private");
   const group = document.querySelector(".group");
-  const cards = document.querySelector(".cards");
 
-  let currentCard = 0;
-
-  const handleSwipe = (e) => {
-      if (e.type === "touchstart") {
-          touchStartX = e.touches[0].clientX;
-      } else if (e.type === "touchend") {
-          const touchEndX = e.cshangedTouches[0].clientX;
-          const deltaX = touchStartX - touchEndX;
-
-          if (deltaX > 50) {
-              // Swipe left, show the next card
-              currentCard = Math.min(currentCard + 1, 4);
-          } else if (deltaX < -50) {
-              // Swipe right, show the previous card
-              currentCard = Math.max(currentCard - 1, 0);
-          }
-      }
-  };
-
-  cards.addEventListener("touchstart", handleSwipe);
-  cards.addEventListener("touchend", handleSwipe);
 
   if (isInViewport(aboutSection) || isInViewport(slider)) {
     paragraphs.forEach((p) => p.classList.add("slide-in-from-left"));
