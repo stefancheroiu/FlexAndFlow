@@ -1,21 +1,69 @@
-// Function to check if an element is in the viewport
+/// Function to check if an element is in the viewport
 function isInViewport(element) {
   const rect = element.getBoundingClientRect();
-  return rect.left <= window.innerWidth && rect.right >= 0;
+  return (
+    rect.top <= window.innerHeight / 2 &&
+    rect.bottom >= 0
+  );
 }
 
 // Function to handle the scroll event
 function handleScroll() {
+
   const aboutSection = document.querySelector(".aboutpilates");
   const paragraphs = document.querySelectorAll(".paragraphs");
+  const slider = document.querySelector(".carousel-inner");
+  const trainerSection = document.querySelector(".trainer");
+  const titluTrainer = document.querySelector(".cine");
+  const imagineBianca = document.querySelector(".imaginebianca");
+  const paragraftrainer = document.querySelector(".paragraftrainer");
+  const insideSection = document.querySelector(".insidesection");
+  const insidetitle = document.querySelector(".insidetitle");
+  const container = document.querySelector(".container");
   const pricesSection = document.querySelector(".prices");
-  const header = document.querySelector(".header");
+  const headerprices = document.querySelector(".headerprices");
+  const line = document.querySelector(".line");
+  const private = document.querySelector(".private");
+  const group = document.querySelector(".group");
 
-  if (isInViewport(aboutSection, pricesSection)) {
+  if (isInViewport(aboutSection) || isInViewport(slider)) {
     paragraphs.forEach((p) => p.classList.add("slide-in-from-left"));
-    header.classList.add("slidefromleft");
-    }
+    slider.classList.add("carouselright");
+  } else {
+    paragraphs.forEach((p) => p.classList.remove("slide-in-from-left"));
+    slider.classList.remove("carouselright");
   }
+
+  if (isInViewport(trainerSection)) {
+    titluTrainer.classList.add("slidefromdown");
+    imagineBianca.classList.add("slidefromlefttrainer");
+    paragraftrainer.classList.add("slidefromrighttrainer");
+  } else {
+    titluTrainer.classList.remove("slidefromdown");
+    imagineBianca.classList.remove("slidefromlefttrainer");
+    paragraftrainer.classList.remove("slidefromrighttrainer"); 
+  }
+
+  if(isInViewport(insideSection)){
+    insidetitle.classList.add("fadeintitlu");
+    container.classList.add("fadeincontainer");
+  } else {
+    insidetitle.classList.remove("fadeintitlu");
+    container.classList.remove("fadeincontainer");
+  }
+
+  if(isInViewport(pricesSection)){
+    headerprices.classList.add("slidefromtop");
+    line.classList.add("slidefrombottomprices");
+    private.classList.add("slidefromleftprices");
+    group.classList.add("slidefromrightprices");
+  } else {
+    headerprices.classList.remove("slidefromtop");
+    line.classList.remove("slidefrombottomprices");
+    private.classList.remove("slidefromleftprices");
+    group.classList.remove("slidefromrightprices");
+  }
+}
 
 // Attach the handleScroll function to the scroll event
 window.addEventListener("scroll", handleScroll);
@@ -36,87 +84,7 @@ async function initMap() {
   map = new Map(document.getElementById("map"), {
     zoom: 11,
     center: position,
-    mapId: "DEMO_MAP_ID",
-    styles: [
-      { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
-      { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
-      { elementType: "labels.text.fill", stylers: [{ color: "#746855" }] },
-      {
-        featureType: "administrative.locality",
-        elementType: "labels.text.fill",
-        stylers: [{ color: "#d59563" }],
-      },
-      {
-        featureType: "poi",
-        elementType: "labels.text.fill",
-        stylers: [{ color: "#d59563" }],
-      },
-      {
-        featureType: "poi.park",
-        elementType: "geometry",
-        stylers: [{ color: "#263c3f" }],
-      },
-      {
-        featureType: "poi.park",
-        elementType: "labels.text.fill",
-        stylers: [{ color: "#6b9a76" }],
-      },
-      {
-        featureType: "road",
-        elementType: "geometry",
-        stylers: [{ color: "#38414e" }],
-      },
-      {
-        featureType: "road",
-        elementType: "geometry.stroke",
-        stylers: [{ color: "#212a37" }],
-      },
-      {
-        featureType: "road",
-        elementType: "labels.text.fill",
-        stylers: [{ color: "#9ca5b3" }],
-      },
-      {
-        featureType: "road.highway",
-        elementType: "geometry",
-        stylers: [{ color: "#746855" }],
-      },
-      {
-        featureType: "road.highway",
-        elementType: "geometry.stroke",
-        stylers: [{ color: "#1f2835" }],
-      },
-      {
-        featureType: "road.highway",
-        elementType: "labels.text.fill",
-        stylers: [{ color: "#f3d19c" }],
-      },
-      {
-        featureType: "transit",
-        elementType: "geometry",
-        stylers: [{ color: "#2f3948" }],
-      },
-      {
-        featureType: "transit.station",
-        elementType: "labels.text.fill",
-        stylers: [{ color: "#d59563" }],
-      },
-      {
-        featureType: "water",
-        elementType: "geometry",
-        stylers: [{ color: "#17263c" }],
-      },
-      {
-        featureType: "water",
-        elementType: "labels.text.fill",
-        stylers: [{ color: "#515c6d" }],
-      },
-      {
-        featureType: "water",
-        elementType: "labels.text.stroke",
-        stylers: [{ color: "#17263c" }],
-      },
-    ],
+    mapId: "8e0a97af9386fef",
   });
 
   // The marker, positioned at Flex&Flow
