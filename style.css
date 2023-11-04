@@ -44,19 +44,20 @@ nav > a:last-child {
   font-weight: 700;
   text-align: center;
   position: absolute;
+  width: 100%;
   top: 50%;
   left: 50%;
   transform:translate(-50%, -50%);
   text-transform: uppercase;
   font-family: "Italiana", serif;
-  font-size: 6vw;
+  font-size: 2rem;
   background: 50% 100% / 50% 50% no-repeat
     radial-gradient(ellipse at bottom, transparent, transparent);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   animation: reveal 1000ms ease-in-out forwards 200ms,
-    glow 2500ms linear infinite 500ms;
+    glow 1500ms linear infinite 500ms;
 }
 
 /* HERO SECTION */
@@ -589,8 +590,8 @@ nav > a:last-child {
   }
 }
 @keyframes glow {
-  40% {
-    text-shadow: 0 0 8px black;
+  10% {
+    text-shadow: 0 0 3px black;
   }
 }
 @keyframes mymove {
@@ -621,6 +622,11 @@ nav > a:last-child {
   .contactitem {
     width: 100%;
     padding-top: 4rem;
+  }
+}
+@media (max-width:596px) {
+  .text {
+    font-size: 1.3rem;
   }
 }
 @media (max-width: 330px) {
@@ -690,10 +696,10 @@ nav > a:last-child {
 }
 @media (max-width: 419px) {
   .card {
-    width: 8.2rem;
+    width: 8rem;
   }
   .cards label {
-    width: 8.2rem;
+    width: 6rem;
   }
   .card .image img{
     height: 6rem;
