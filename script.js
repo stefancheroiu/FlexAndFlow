@@ -1,15 +1,11 @@
 /// Function to check if an element is in the viewport
 function isInViewport(element) {
   const rect = element.getBoundingClientRect();
-  return (
-    rect.top <= window.innerHeight / 2 &&
-    rect.bottom >= 0
-  );
+  return rect.top <= window.innerHeight / 2 && rect.bottom >= 0;
 }
 
 // Function to handle the scroll event
 function handleScroll() {
-
   const aboutSection = document.querySelector(".aboutpilates");
   const paragraphs = document.querySelectorAll(".paragraphs");
   const slider = document.querySelector(".carousel-inner");
@@ -26,7 +22,6 @@ function handleScroll() {
   const private = document.querySelector(".private");
   const group = document.querySelector(".group");
 
-
   if (isInViewport(aboutSection) || isInViewport(slider)) {
     paragraphs.forEach((p) => p.classList.add("slide-in-from-left"));
     slider.classList.add("carouselright");
@@ -42,10 +37,10 @@ function handleScroll() {
   } else {
     titluTrainer.classList.remove("slidefromdown");
     imagineBianca.classList.remove("slidefromlefttrainer");
-    paragraftrainer.classList.remove("slidefromrighttrainer"); 
+    paragraftrainer.classList.remove("slidefromrighttrainer");
   }
 
-  if(isInViewport(insideSection)){
+  if (isInViewport(insideSection)) {
     insidetitle.classList.add("fadeintitlu");
     container.classList.add("fadeincontainer");
   } else {
@@ -53,7 +48,7 @@ function handleScroll() {
     container.classList.remove("fadeincontainer");
   }
 
-  if(isInViewport(pricesSection)){
+  if (isInViewport(pricesSection)) {
     headerprices.classList.add("slidefromtop");
     line.classList.add("slidefrombottomprices");
     private.classList.add("slidefromleftprices");
@@ -97,4 +92,3 @@ async function initMap() {
 }
 
 initMap();
-
