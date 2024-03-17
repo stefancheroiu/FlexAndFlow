@@ -15,7 +15,7 @@ function handleScroll() {
   const paragraftrainer = document.querySelector(".paragraftrainer");
   const insideSection = document.querySelector(".insidesection");
   const insidetitle = document.querySelector(".insidetitle");
-  const container = document.querySelector(".container");
+  const sliderwrapper = document.querySelector(".slider-wrapper");
   const pricesSection = document.querySelector(".prices");
   const headerprices = document.querySelector(".headerprices");
   const line = document.querySelector(".line");
@@ -42,10 +42,10 @@ function handleScroll() {
 
   if (isInViewport(insideSection)) {
     insidetitle.classList.add("fadeintitlu");
-    container.classList.add("fadeincontainer");
+    sliderwrapper.classList.add("fadeincontainer");
   } else {
     insidetitle.classList.remove("fadeintitlu");
-    container.classList.remove("fadeincontainer");
+    sliderwrapper.classList.remove("fadeincontainer");
   }
 
   if (isInViewport(pricesSection)) {
@@ -63,6 +63,91 @@ function handleScroll() {
 
 // Attach the handleScroll function to the scroll event
 window.addEventListener("scroll", handleScroll);
+
+const initSlider = () => {
+  const sliders = document.querySelectorAll(".container"); // Select all slider containers
+
+  sliders.forEach((slider) => {
+    const imageList = slider.querySelector(".slider-wrapper .image-list");
+    const slideButtons = slider.querySelectorAll(
+      ".slider-wrapper .slide-button"
+    );
+    const sliderScrollbar = slider.querySelector(".slider-scrollbar");
+    const scrollbarThumb = sliderScrollbar.querySelector(".scrollbar-thumb");
+    const maxScrollLeft = imageList.scrollWidth - imageList.clientWidth;
+
+    // Handle scrollbar thumb drag
+    scrollbarThumb.addEventListener("mousedown", (e) => {
+      const startX = e.clientX;
+      const thumbPosition = scrollbarThumb.offsetLeft;
+      const maxThumbPosition =
+        sliderScrollbar.getBoundingClientRect().width -
+        scrollbarThumb.offsetWidth;
+
+      // Update thumb position on mouse move
+      const handleMouseMove = (e) => {
+        const deltaX = e.clientX - startX;
+        const newThumbPosition = thumbPosition + deltaX;
+
+        // Ensure the scrollbar thumb stays within bounds
+        const boundedPosition = Math.max(
+          0,
+          Math.min(maxThumbPosition, newThumbPosition)
+        );
+        const scrollPosition =
+          (boundedPosition / maxThumbPosition) * maxScrollLeft;
+
+        scrollbarThumb.style.left = `${boundedPosition}px`;
+        imageList.scrollLeft = scrollPosition;
+      };
+
+      // Remove event listeners on mouse up
+      const handleMouseUp = () => {
+        document.removeEventListener("mousemove", handleMouseMove);
+        document.removeEventListener("mouseup", handleMouseUp);
+      };
+
+      // Add event listeners for drag interaction
+      document.addEventListener("mousemove", handleMouseMove);
+      document.addEventListener("mouseup", handleMouseUp);
+    });
+
+    // Slide images according to the slide button clicks
+    slideButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const direction = button.id === "prev-slide" ? -1 : 1;
+        const scrollAmount = imageList.clientWidth * direction;
+        imageList.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      });
+    });
+
+    // Show or hide slide buttons based on scroll position
+    const handleSlideButtons = () => {
+      slideButtons[0].style.display =
+        imageList.scrollLeft <= 0 ? "none" : "flex";
+      slideButtons[1].style.display =
+        imageList.scrollLeft >= maxScrollLeft ? "none" : "flex";
+    };
+
+    // Update scrollbar thumb position based on image scroll
+    const updateScrollThumbPosition = () => {
+      const scrollPosition = imageList.scrollLeft;
+      const thumbPosition =
+        (scrollPosition / maxScrollLeft) *
+        (sliderScrollbar.clientWidth - scrollbarThumb.offsetWidth);
+      scrollbarThumb.style.left = `${thumbPosition}px`;
+    };
+
+    // Call these two functions when image list scrolls
+    imageList.addEventListener("scroll", () => {
+      updateScrollThumbPosition();
+      handleSlideButtons();
+    });
+  });
+};
+
+window.addEventListener("resize", initSlider);
+window.addEventListener("load", initSlider);
 
 //Add the map
 
