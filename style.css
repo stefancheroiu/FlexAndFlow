@@ -338,7 +338,6 @@ nav > a:last-child {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 5rem;
   font-family: "Play", sans-serif;
   width: auto;
   position: relative;
@@ -350,19 +349,16 @@ nav > a:last-child {
   justify-content: space-between;
   align-items: center;
   padding: 0 2rem;
-  padding-bottom: 7rem;
+  padding-bottom: 2rem;
 }
 .headerprices {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
   text-transform: uppercase;
   letter-spacing: 3px;
   font-weight: 700;
   font-size: 2.6rem;
   transform: translateY(-200%);
   transition: transform 2s ease-in-out;
+  padding-bottom: 4rem;
 }
 .slidefromtop {
   transform: translateY(0);
@@ -411,7 +407,6 @@ nav > a:last-child {
   position: relative;
 }
 .header {
-  border: 1px black solid;
   padding: 0.5rem;
   text-transform: uppercase;
 }
@@ -427,15 +422,13 @@ span {
 .private > h1 {
   text-align: center;
 }
-.chenar {
-  border: 1px black solid;
-}
+
 .linieprivat,
 .liniegrup {
   border-left: 2px solid #928778;
   height: 10rem;
   position: relative;
-  bottom: 0.5rem;
+  bottom: 1rem;
 }
 .test {
   display: flex;
@@ -453,7 +446,7 @@ span {
   text-align: center;
 }
 .box2 {
-  padding-top: 2.3rem;
+  padding-top: 2.5rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -697,6 +690,9 @@ span {
   .home {
     background-size: cover;
   }
+  .box2 {
+    padding-top: 2.2rem;
+  }
 }
 @media (max-width: 625px) {
   .card .image img {
@@ -710,6 +706,7 @@ span {
   }
   .pricelist {
     padding: 0 0.2rem;
+    padding-bottom: 2rem;
   }
 }
 @media (max-width: 419px) {
@@ -724,6 +721,12 @@ span {
   }
   .trainerbox {
     padding: 0 1rem 5rem;
+  }
+  .header {
+    font-size: 1.3rem;
+  }
+  .headerprices {
+    font-size: 0.7rem;
   }
 }
 @media (max-width: 710px) {
