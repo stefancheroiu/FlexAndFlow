@@ -555,7 +555,7 @@ ul {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 130vh;
+  height: 140vh;
   margin: 0 2rem;
 }
 .pricelist {
@@ -829,6 +829,7 @@ ul {
     padding: 0 1rem;
   }
 }
+
 @media (max-width: 1140px) {
   .pricelistrow {
     padding: 0 1.5rem;
@@ -931,6 +932,20 @@ ul {
   }
   .prices {
     height: auto;
+  }
+  .pricelist {
+    background-color: #928778;
+  }
+  .pricelist > h1 {
+    padding-bottom: 2rem;
+  }
+  .flexandflowunu,
+  .flexandflowdoi {
+    background-color: #ededed;
+    padding: 0 2rem 2rem;
+  }
+  .flexandflowunu {
+    margin-bottom: 2rem;
   }
   .flexandflowunu > img,
   .flexandflowdoi > img {
