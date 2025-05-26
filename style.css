@@ -782,7 +782,6 @@ ul {
 .imaginelogo {
   height: 5rem;
   width: 9rem;
-  margin-left: 1rem;
 }
 .map {
   grid-area: mapa;
@@ -1061,6 +1060,13 @@ ul {
   }
   .aboutpilates img {
     height: 7rem;
+  }
+  .copyright {
+    font-size: 0.8rem;
+  }
+  .imaginelogo {
+    height: 4rem;
+    width: 7rem;
   }
 }
 @media (max-width: 625px) {
